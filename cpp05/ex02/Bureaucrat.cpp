@@ -33,16 +33,16 @@ void Bureaucrat::DecrementGrade()
 	grade++;
 }
 
-void Bureaucrat::signForm(Form &edited_form)
+void Bureaucrat::signForm(AForm &edited_form)
 {
 	try
 	{
 		edited_form.beSigned(*this);
-		std::cout << name << " signed " << edited_form.get_name();
+		std::cout << name << " signed " << edited_form.get_name() << std::endl;
 	}
 	catch (std::exception &e)
 	{
-		std::cout << name << " couldn’t sign " << edited_form.get_name() << " because " << e.what();
+		std::cout << name << " couldn’t sign " << edited_form.get_name() << " because " << e.what() << std::endl;
 	}
 }
 
@@ -65,3 +65,15 @@ std::ostream& operator<<(std::ostream& out, const Bureaucrat& b)
 	return out;
 }
 
+void Bureaucrat::executeForm(AForm const & form) const
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << this->getName() << " executed " << form.get_name() << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << this->getName() << " can't execute " << form.get_name() << " because of " << e.what() << std::endl;
+	}
+}

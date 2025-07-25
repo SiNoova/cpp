@@ -31,7 +31,6 @@ void ShrubberyCreationForm::executeAction() const
 		<< "      // \\\\\n";
 
     out.close();
-	std::cout << "a tree was created in " << target_name << "_shrubbery" << std::endl;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {}

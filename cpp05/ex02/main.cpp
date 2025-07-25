@@ -6,23 +6,37 @@
 int main()
 {
 	try
-	{
-		Bureaucrat alae("alae", 50);
-		// Bureaucrat tani("alaeaa", 138);
-		ShrubberyCreationForm btata("khobza");
-		RobotomyRequestForm btata2("khobza2");
-		PresidentialPardonForm btata3("khobza3");
-
-		alae.signForm(btata);
-		alae.signForm(btata2);
-		alae.signForm(btata3);
-
-		alae.executeForm(btata);
-		alae.executeForm(btata2);
-		alae.executeForm(btata3);
-	}
-	catch (std::exception &e)
-	{
-		std::cout << "Error " << e.what();
-	}
+    {
+        Bureaucrat ruined("ruined", 1);
+        PresidentialPardonForm ppf("ppf");
+        ruined.signForm(ppf);
+        ruined.executeForm(ppf);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+	try
+    {
+        Bureaucrat ruined("ruined", 1);
+        RobotomyRequestForm lol("xd");
+        ruined.signForm(lol);
+        ruined.executeForm(lol);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+	try
+    {
+        Bureaucrat ruined("ruined", 137);
+        ShrubberyCreationForm scf("xddd");
+        ruined.signForm(scf);
+        scf.execute(ruined);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    
 }

@@ -11,10 +11,14 @@ class Form
 	private:
 		const std::string name;
 		bool is_signed;
-		int min_grade_sign;
-		int min_grade_excute;
+		const int min_grade_sign;
+		const int min_grade_excute;
 	public:
-		Form(std::string init_name, int min_g_sign, int min_g_excute);
+		Form();
+		Form(const std::string init_name, const int min_g_sign, const int min_g_excute);
+		Form(const Form &other);
+		Form& operator=(const Form &other);
+		~Form();
 		const std::string& get_name() const;
 		bool is_it_signed() const;
 		int GetMinGradeToSign() const;

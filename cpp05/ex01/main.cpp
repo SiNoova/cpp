@@ -6,7 +6,21 @@ int main() {
 
     try
 	{
-        Form nForm("test", 130, 11);
+        Form nForm("test", 160, 11);
+        std::cout << nForm << '\n';
+        Nova.signForm(nForm);
+        std::cout << nForm << '\n';
+    }
+	catch (const std::exception& e)
+	{
+        std::cerr << e.what() << '\n';
+    }
+
+	std::cout << "---------------------\n";
+    
+	try
+	{
+        Form nForm("test2", 130, 11);
         std::cout << nForm << '\n';
         Nova.signForm(nForm);
         std::cout << nForm << '\n';

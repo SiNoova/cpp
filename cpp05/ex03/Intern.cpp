@@ -1,5 +1,25 @@
 #include "Intern.hpp"
 
+const char* Intern::CreationErrorException::what() const throw()
+{
+	return "Intern: Form creation error";
+}
+
+
+Intern::Intern()
+{}
+
+Intern::Intern(const Intern& other)
+{
+	(void)other;
+}
+
+Intern& Intern::operator=(const Intern& other)
+{
+	(void)other;
+	return *this;
+}
+
 AForm* makeShrubberyCreationForm(const std::string target)
 {
 	return(new ShrubberyCreationForm(target));
@@ -27,7 +47,10 @@ AForm* Intern::makeForm(const std::string form_name, const std::string target)
 			std::cout << "Intern creates " << form_name << "." << std::endl;
 			return (functions[i](target));
 		}
-		std::cout << "Error creating the Form" << std::endl;
-		return (NULL);
 	}
+	throw CreationErrorException();
+	return (NULL);
 }
+
+Intern::~Intern()
+{}

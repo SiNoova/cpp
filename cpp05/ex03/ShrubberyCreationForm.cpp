@@ -1,7 +1,18 @@
 #include "ShrubberyCreationForm.hpp"
 
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137), target_name("Default")
+{}
+
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string target) : AForm("ShrubberyCreationForm", 145, 137), target_name(target)
-{	
+{	}
+
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other) : AForm("ShrubberyCreationForm", 145, 137), target_name(other.target_name)
+{}
+
+ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &other)
+{
+    (void)other;
+    return (*this);
 }
 
 void ShrubberyCreationForm::executeAction() const
@@ -20,5 +31,6 @@ void ShrubberyCreationForm::executeAction() const
 		<< "      // \\\\\n";
 
     out.close();
-	std::cout << "a tree was created in " << target_name << "_shrubbery" << std::endl;
 }
+
+ShrubberyCreationForm::~ShrubberyCreationForm() {}

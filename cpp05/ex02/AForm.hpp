@@ -20,7 +20,7 @@ class AForm
 		AForm(const std::string init_name, const int min_g_sign, const int min_g_excute);
 		AForm(const AForm &other);
 		AForm& operator=(const AForm &other);
-		virtual ~AForm();
+		virtual~AForm();
 		const std::string& get_name() const;
 		bool is_it_signed() const;
 		int GetMinGradeToSign() const;

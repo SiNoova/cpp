@@ -99,7 +99,7 @@ void AForm::execute(Bureaucrat const & executor) const
 AForm::~AForm()
 {}
 
-std::ostream& operator<<(std::ostream& out, const AForm& b)
+std::ostream& operator<<(std::ostream &out, const AForm& b)
 {
 	out << b.get_name() << ", AForm's min grade to sign " << b.GetMinGradeToSign() << ", min grade to excute " << b.GetMinGradeToExcute();
 	if (b.is_it_signed())
@@ -108,4 +108,3 @@ std::ostream& operator<<(std::ostream& out, const AForm& b)
 		out << " and it's not signed yet";
 	return out;
 }
-

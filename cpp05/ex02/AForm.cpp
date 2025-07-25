@@ -1,7 +1,7 @@
 #include "AForm.hpp"
 
 AForm::AForm(const std::string init_name, int min_g_sign, int min_g_excute) 
-: name(init_name), min_grade_sign(min_g_sign), min_grade_excute(min_g_excute), is_signed(false)
+: name(init_name), is_signed(false), min_grade_sign(min_g_sign), min_grade_excute(min_g_excute)
 {
 	if (min_grade_sign < 1 || min_grade_excute < 1)
 		throw GradeTooHighException();

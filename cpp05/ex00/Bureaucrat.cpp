@@ -6,6 +6,11 @@ Bureaucrat::GradeTooHighException::GradeTooHighException(const std::string new_m
 Bureaucrat::GradeTooLowException::GradeTooLowException(const std::string new_message) : message(new_message)
 {}
 
+const char *Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return message.c_str();
+}
+
 const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
 	return message.c_str();
@@ -15,10 +20,7 @@ Bureaucrat::GradeTooHighException::~GradeTooHighException() throw() {}
 
 Bureaucrat::GradeTooLowException::~GradeTooLowException() throw() {}
 
-const char *Bureaucrat::GradeTooHighException::what() const throw()
-{
-	return message.c_str();
-}
+
 
 Bureaucrat::Bureaucrat() : name ("Default"), grade(150)
 {}
@@ -45,9 +47,6 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat &other)
 	return *this;
 }
 
-Bureaucrat::~Bureaucrat()
-{}
-
 const std::string& Bureaucrat::getName() const
 {
 	return name;
@@ -72,10 +71,12 @@ void Bureaucrat::DecrementGrade()
 	grade++;
 }
 
+Bureaucrat::~Bureaucrat()
+{}
+
 
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& b)
 {
-	out << b.getName() << ", bureaucrat grade " << b.getGrade() << ".";
+	out << b.getName() << ", bureaucrat grade " << b.getGrade();
 	return out;
 }
-

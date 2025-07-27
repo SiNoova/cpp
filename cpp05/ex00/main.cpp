@@ -12,7 +12,7 @@ int main() {
 		std::cout << "After decrement: " << john << std::endl;
 	}
 	catch (std::exception &e) {
-		std::cerr << "Exception: " << e.what() << std::endl;
+		std::cout << "Exception: " << e.what() << std::endl;
 	}
 
 	std::cout << "--------------------------" << std::endl;
@@ -21,7 +21,7 @@ int main() {
 		Bureaucrat alice("Alice", 0);
 	}
 	catch (std::exception &e) {
-		std::cerr << "Exception when creating Alice: " << e.what() << std::endl;
+		std::cout << "Exception when creating Alice: " << e.what() << std::endl;
 	}
 
 	std::cout << "--------------------------" << std::endl;
@@ -30,7 +30,7 @@ int main() {
 		Bureaucrat bob("Bob", 151); 
 	}
 	catch (std::exception &e) {
-		std::cerr << "Exception when creating Bob: " << e.what() << std::endl;
+		std::cout << "Exception when creating Bob: " << e.what() << std::endl;
 	}
 
 	std::cout << "--------------------------" << std::endl;
@@ -41,7 +41,7 @@ int main() {
 		top.IncrementGrade();
 	}
 	catch (std::exception &e) {
-		std::cerr << "Exception on increment: " << e.what() << std::endl;
+		std::cout << "Exception on increment: " << e.what() << std::endl;
 	}
 
 	std::cout << "--------------------------" << std::endl;
@@ -51,7 +51,7 @@ int main() {
 		low.DecrementGrade();
 	}
 	catch (std::exception &e) {
-		std::cerr << "Exception on decrement: " << e.what() << std::endl;
+		std::cout << "Exception on decrement: " << e.what() << std::endl;
 	}
 
 	return 0;

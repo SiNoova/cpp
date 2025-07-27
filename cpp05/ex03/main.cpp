@@ -14,7 +14,7 @@ int main()
     }
     catch(const std::exception& e)
     {
-        std::cerr << e.what() << '\n';
+        std::cout << e.what() << '\n';
     }
     delete invalid;
 	AForm *ppf = NULL;
@@ -28,7 +28,7 @@ int main()
     }
     catch(const std::exception& e)
     {
-        std::cerr << e.what() << '\n';
+        std::cout << e.what() << '\n';
     }
     delete ppf;
     AForm *rrf = NULL;
@@ -42,7 +42,7 @@ int main()
     }
     catch(const std::exception& e)
     {
-        std::cerr << e.what() << '\n';
+        std::cout << e.what() << '\n';
     }
     delete rrf;
 	AForm *scf = NULL;
@@ -56,7 +56,7 @@ int main()
     }
     catch(const std::exception& e)
     {
-        std::cerr << e.what() << '\n';
+        std::cout << e.what() << '\n';
     }
     delete scf;
 }

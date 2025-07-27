@@ -37,8 +37,8 @@ AForm* makePresidentialPardonForm(const std::string target)
 
 AForm* Intern::makeForm(const std::string form_name, const std::string target)
 {
-	std::string list_forms[3] = { "robotomy request", "presidential Pardon", "shrubbery creation"};
-	AForm* (*functions[4])(const std::string) = {&makePresidentialPardonForm, &makeRobotomyRequestForm, &makeShrubberyCreationForm};
+	std::string list_forms[3] = { "robotomy request", "presidential pardon", "shrubbery creation"};
+	AForm* (*functions[4])(const std::string) = {&makeRobotomyRequestForm, &makePresidentialPardonForm, &makeShrubberyCreationForm};
 
 	for (int i = 0; i < 3; i++)
 	{

@@ -82,8 +82,8 @@ void ScalarConverter::convert(const std::string &literal)
 				int a;
 				std::stringstream ss(literal);
 				ss >> a;
-				std::cout << a;
-				return;
+				
+				if (a < 0 || a > )
 				if (isprint(a))
 					std::cout << "char: " << "\'" << static_cast<char>(a) << "\'" << std::endl;
 				else

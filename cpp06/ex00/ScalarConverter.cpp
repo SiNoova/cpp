@@ -34,14 +34,14 @@ int detect_type(const std::string &literal)
 		return (1);
 	else if (literal == "+inf" || literal == "-inf" || literal == "nan")
 		return (2);
-	else if (literal.length() == 1 && (literal[0] < '0' || literal[0] > '9'))
+	else if (literal.length() == 1 && !std::isdigit(literal[0]))
 		return (3);
 	else if (pos == std::string::npos && point_pos == std::string::npos && check_if_nums(literal, 0))
 		return (4);
 	else if (pos != std::string::npos && point_pos != std::string::npos && check_if_nums(literal, 1))
-		std::cout << "its a float!!" << std::endl;
+		return (5);
 	else if (check_if_nums(literal, 3))
-		std::cout << "its a double!!" << std::endl;
+		return (6);
 	else
 		std::cout << "Error!!" << std::endl;
 	return 0;
@@ -76,6 +76,7 @@ void ScalarConverter::convert(const std::string &literal)
 				std::cout << "int: " << static_cast<int>(a) << std::endl;
 				std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(a) << "f" << std::endl;
 				std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(a) << std::endl;
+				break;
 			}
 			case 4:
 			{
@@ -83,11 +84,61 @@ void ScalarConverter::convert(const std::string &literal)
 				std::stringstream ss(literal);
 				ss >> a;
 				
-				if (a < 0 || a > )
-				if (isprint(a))
+				if (a < 0 || a > 255)
+					std::cout << "char: impossible" << std::endl;
+				else if (isprint(a))
 					std::cout << "char: " << "\'" << static_cast<char>(a) << "\'" << std::endl;
 				else
 					std::cout << "char: " << "Non displayable" << std::endl;
+				std::cout << "int: ";
+				if (ss.fail())
+				{
+					std::cout << "impossible" << std::endl;
+					std::cout << "float: impossible" << std::endl;
+					std::cout << "double: impossible" << std::endl;
+
+				}
+				else
+				{
+					std::cout << a << std::endl;
+					std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(a) << "f" << std::endl;
+					std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(a) << std::endl;
+				}
+				break;
+			}
+			case 5:
+			{
+				float a;
+				std::stringstream ss(literal);
+				ss >> a;
+				
+				if (a < 0 || a > 255)
+					std::cout << "char: impossible" << std::endl;
+				else if (isprint(a))
+					std::cout << "char: " << "\'" << static_cast<unsigned char>(a) << "\'" << std::endl;
+				else
+					std::cout << "char: " << "Non displayable" << std::endl;
+				std::cout << "int: " << static_cast<int>(a) << std::endl;
+				std::cout << "float: " << std::fixed << std::setprecision(1) << (a) << "f" << std::endl;
+				std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(a) << std::endl;
+				break;
+			}
+			case 6:
+			{
+				double a;
+				std::stringstream ss(literal);
+				ss >> a;
+				
+				if (a < 0 || a > 255)
+					std::cout << "char: impossible" << std::endl;
+				else if (isprint(a))
+					std::cout << "char: " << "\'" << static_cast<unsigned char>(a) << "\'" << std::endl;
+				else
+					std::cout << "char: " << "Non displayable" << std::endl;
+				std::cout << "int: " << static_cast<int>(a) << std::endl;
+				std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(a) << "f" << std::endl;
+				std::cout << "double: " << std::fixed << std::setprecision(1) << a << std::endl;
+				break;
 			}
 		}
 }

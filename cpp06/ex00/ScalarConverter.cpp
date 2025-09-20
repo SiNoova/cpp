@@ -14,12 +14,12 @@ int check_if_nums(std::string str, int num_type)
 			continue;
 		if (num_type == 1 && i == str.size() - 1 && str[i] == 'f')
 			break;
-		if (num_type && !point_flag && str[i] == '.' && str[i + 1] != 'f' && i != str.size() - 1)
+		if (num_type && !point_flag &&  str[i] == '.' && str[i + 1] != 'f' && i + 1 < str.size())
 		{
 			point_flag = true;
 			continue;
 		}	
-		if (!std::isdigit(static_cast<unsigned char>(str[i])))
+		if (!std::isdigit(static_cast<char>(str[i])))
 			return (0);
 	}
 	return (1);
@@ -84,14 +84,14 @@ void ScalarConverter::convert(const std::string &literal)
 				std::stringstream ss(literal);
 				ss >> a;
 				
-				if (a < 0 || a > 255)
+				if (a < 0 || a > 127)
 					std::cout << "char: impossible" << std::endl;
 				else if (isprint(a))
 					std::cout << "char: " << "\'" << static_cast<char>(a) << "\'" << std::endl;
 				else
 					std::cout << "char: " << "Non displayable" << std::endl;
 				std::cout << "int: ";
-				if (ss.fail())
+				if (ss.fail() )
 				{
 					std::cout << "impossible" << std::endl;
 					std::cout << "float: impossible" << std::endl;
@@ -110,17 +110,31 @@ void ScalarConverter::convert(const std::string &literal)
 			{
 				float a;
 				std::stringstream ss(literal);
+
 				ss >> a;
-				
-				if (a < 0 || a > 255)
-					std::cout << "char: impossible" << std::endl;
-				else if (isprint(a))
-					std::cout << "char: " << "\'" << static_cast<unsigned char>(a) << "\'" << std::endl;
+				if (!ss.fail())
+				{
+					if (a < 0 || a > 255)
+						std::cout << "char: impossible" << std::endl;
+					else if (isprint((static_cast<int>(a))))
+						std::cout << "char: " << "\'" << static_cast<char>(a) << "\'" << std::endl;
+					else
+						std::cout << "char: " << "Non displayable" << std::endl;	
+					std::cout << "int: ";
+					if (a >= std::numeric_limits<int>::min() && a <= std::numeric_limits<int>::max())
+						 std::cout << static_cast<int>(a) << std::endl;
+					else
+						std::cout << "impossible" << std::endl;
+					std::cout << "float: " << std::fixed << std::setprecision(1) << (a) << "f" << std::endl;
+					std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(a) << std::endl;
+				}
 				else
-					std::cout << "char: " << "Non displayable" << std::endl;
-				std::cout << "int: " << static_cast<int>(a) << std::endl;
-				std::cout << "float: " << std::fixed << std::setprecision(1) << (a) << "f" << std::endl;
-				std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(a) << std::endl;
+				{
+					std::cout << "char: impossible" << std::endl;
+					std::cout << "int: impossible" << std::endl;
+					std::cout << "float: impossible" << std::endl;
+					std::cout << "double: impossible" << std::endl;
+				}
 				break;
 			}
 			case 6:
@@ -128,16 +142,34 @@ void ScalarConverter::convert(const std::string &literal)
 				double a;
 				std::stringstream ss(literal);
 				ss >> a;
-				
-				if (a < 0 || a > 255)
-					std::cout << "char: impossible" << std::endl;
-				else if (isprint(a))
-					std::cout << "char: " << "\'" << static_cast<unsigned char>(a) << "\'" << std::endl;
+
+				if (!ss.fail())
+				{
+					if (a < 0 || a > 255)
+						std::cout << "char: impossible" << std::endl;
+					else if (isprint((static_cast<int>(a))))
+						std::cout << "char: " << "\'" << static_cast<char>(a) << "\'" << std::endl;
+					else
+						std::cout << "char: " << "Non displayable" << std::endl;
+					std::cout << "int: ";
+					if (a >= std::numeric_limits<int>::min() && a <= std::numeric_limits<int>::max())
+						 std::cout << static_cast<int>(a) << std::endl;
+					else
+						std::cout << "impossible" << std::endl;
+					std::cout << "float: ";
+					if (a >= std::numeric_limits<float>::min() && a <= std::numeric_limits<float>::max())
+						 std::cout << std::fixed << std::setprecision(1) <<  static_cast<float>(a) << "f" << std::endl;
+					else
+						std::cout << "impossible" << std::endl;
+					std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(a) << std::endl;
+				}
 				else
-					std::cout << "char: " << "Non displayable" << std::endl;
-				std::cout << "int: " << static_cast<int>(a) << std::endl;
-				std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(a) << "f" << std::endl;
-				std::cout << "double: " << std::fixed << std::setprecision(1) << a << std::endl;
+				{
+					std::cout << "char: impossible" << std::endl;
+					std::cout << "int: impossible" << std::endl;
+					std::cout << "float: impossible" << std::endl;
+					std::cout << "double: impossible" << std::endl;
+				}
 				break;
 			}
 		}

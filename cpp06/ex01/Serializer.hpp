@@ -14,6 +14,11 @@ typedef struct s_Data {
 
 class Serializer
 {
+	private:
+		Serializer(void);
+		Serializer(Serializer const&);
+		Serializer& operator=(Serializer const&);
+		~Serializer(void);
 	public:
 		static uintptr_t serialize(Data* ptr);
 		static Data* deserialize(uintptr_t raw);

@@ -1,5 +1,15 @@
 #include "ScalarConverter.hpp"
 
+ScalarConverter::ScalarConverter() {}
+
+ScalarConverter::ScalarConverter(ScalarConverter const &) {}
+
+ScalarConverter& ScalarConverter::operator=(ScalarConverter const &){
+	return *this;
+}
+
+ScalarConverter::~ScalarConverter() {}
+
 int check_if_nums(std::string str, int num_type)
 {
 	bool point_flag = false;

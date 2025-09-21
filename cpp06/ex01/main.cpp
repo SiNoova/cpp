@@ -1,6 +1,6 @@
 #include "Serializer.hpp"
 
-int main(int argc, char **argv)
+int main()
 {
 	Data result = {54, 3, 8.6};
 	Data *result_ptr = &result;

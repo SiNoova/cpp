@@ -6,7 +6,7 @@ int check_if_nums(std::string str, int num_type)
 
 	if (str.empty())
 		return (0);
-	for (int i = 0; str[i]; i++)
+	for (size_t i = 0; str[i]; i++)
 	{
 		if (str[0] == '.')
 			return (0);
@@ -27,8 +27,8 @@ int check_if_nums(std::string str, int num_type)
 
 int detect_type(const std::string &literal)
 {
-	int pos = literal.find('f');
-	int point_pos = literal.find('.');
+	size_t pos = literal.find('f');
+	size_t point_pos = literal.find('.');
 
 	if (literal == "+inff" || literal == "-inff" || literal == "nanf")
 		return (1);

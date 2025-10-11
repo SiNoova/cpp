@@ -15,6 +15,8 @@ class Span
 	public:
 		Span();
 		Span(unsigned int new_n);
+		Span(Span const& other);
+		Span& operator=(Span const& other);
 		void addNumber(const int new_number);
 		void addRange(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 		int shortestSpan();

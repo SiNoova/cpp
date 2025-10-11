@@ -1,8 +1,20 @@
 #include "Span.hpp"
 
-Span::Span() : N(0) {}
+Span::Span() : N(0), intergers() {}
 
-Span::Span(unsigned int new_n) : N(new_n) {}
+Span::Span(unsigned int new_n) : N(new_n), intergers() {}
+
+Span::Span(const Span &other) : N(other.N), intergers(other.intergers) {}
+
+Span &Span::operator=(const Span &other)
+{
+	if (this != &other)
+	{
+		N = other.N;
+		intergers = other.intergers;
+	}
+	return *this;
+}
 
 void Span::addNumber(const int new_number)
 {

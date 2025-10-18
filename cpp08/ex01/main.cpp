@@ -1,8 +1,8 @@
 #include "Span.hpp"
 #include <iostream>
 #include <vector>
-#include <cstdlib>  // for rand()
-#include <ctime>    // for time()
+#include <cstdlib>
+#include <ctime> 
 
 int main()
 {
@@ -21,7 +21,6 @@ int main()
         std::cout << "\n===== Large test (10,000 numbers) =====" << std::endl;
         Span bigSpan(10000);
 
-        // Fill with 10,000 random numbers
         std::srand(static_cast<unsigned int>(std::time(nullptr)));
         for (int i = 0; i < 10000; ++i)
             bigSpan.addNumber(std::rand() % 1337);
@@ -32,7 +31,7 @@ int main()
         std::cout << "\n===== Range insert test =====" << std::endl;
         std::vector<int> range;
         for (int i = 0; i < 1000; ++i)
-            range.push_back(i * 5);  // predictable spacing
+            range.push_back(i * 5); 
 
         Span rangeSpan(1000);
         rangeSpan.addRange(range.begin(), range.end());

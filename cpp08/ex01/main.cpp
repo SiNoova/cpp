@@ -6,7 +6,8 @@
 
 int main()
 {
-    try {
+    try
+	{
         std::cout << "===== Official test =====" << std::endl;
         Span sp = Span(5);
         sp.addNumber(6);
@@ -21,7 +22,7 @@ int main()
         std::cout << "\n===== Large test (10,000 numbers) =====" << std::endl;
         Span bigSpan(10000);
 
-        std::srand(static_cast<unsigned int>(std::time(nullptr)));
+        std::srand(static_cast<unsigned int>(std::time(NULL)));
         for (int i = 0; i < 10000; ++i)
             bigSpan.addNumber(std::rand() % 1337);
 
@@ -39,7 +40,8 @@ int main()
         std::cout << "Shortest span: " << rangeSpan.shortestSpan() << std::endl;
         std::cout << "Longest span: " << rangeSpan.longestSpan() << std::endl;
     }
-    catch (const std::exception &e) {
+    catch (const std::exception &e)
+	{
         std::cerr << "Error: " << e.what() << std::endl;
     }
 }

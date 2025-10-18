@@ -5,7 +5,6 @@
 #include <vector>
 #include <algorithm>
 #include <limits>
-#include <numeric>
 
 class Span
 {

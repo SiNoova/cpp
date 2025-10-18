@@ -39,7 +39,7 @@ int Span::shortestSpan()
 	int min = std::numeric_limits<int>::max();
 	std::sort(sorted.begin(), sorted.end());
 	
-	for (int i = 1; i < sorted.size(); i++)
+	for (size_t i = 1; i < sorted.size(); i++)
 		min = std::min(min, sorted[i] - sorted[i - 1]);
 	return min;
 }

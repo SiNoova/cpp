@@ -2,36 +2,74 @@
 #include <iostream>
 
 int main() {
-    // Create a MutantStack of int
-    MutantStack<int> mstack;
+	std::cout << "std::list ------------------------------" << std::endl;
+	{
+		std::list<int> intList;
+		intList.push_back(1);
+		intList.push_back(2);
+		intList.push_back(1337);
+		std::cout << "intList.back(): " << intList.back() << std::endl;
+		intList.pop_back();
+		std::cout << "intList.size(): " << intList.size() << std::endl;
+		intList.push_back(3);
+		intList.push_back(4);
+		intList.push_back(5);
+		intList.push_back(6);
 
-    // Push some elements
-    mstack.push(10);
-    mstack.push(20);
-    mstack.push(30);
-    mstack.push(40);
+		std::list<int>::iterator listIt = intList.begin();
+		std::list<int>::iterator listEnd = intList.end();
+		++listIt;
+		--listIt;
+		while (listIt != listEnd)
+		{
+			std::cout << *listIt << std::endl;
+			++listIt;
+		}
 
-    // Iterate using iterator (forward)
-    std::cout << "Forward iteration: ";
-    for (MutantStack<int>::iterator it = mstack.begin(); it != mstack.end(); ++it) {
-        std::cout << *it << " ";
-    }
-    std::cout << std::endl;
+		std::list<int> copiedList(intList);
+		std::list<int>::reverse_iterator listRevIt;
+		std::cout << "rbegin: " << *copiedList.rbegin() << std::endl;
+		std::cout << "rend: " << *(--copiedList.rend()) << std::endl;
+		std::cout << "Content: " << std::endl;
+		for (listRevIt = --copiedList.rend(); listRevIt != --copiedList.rbegin(); listRevIt--){
+			std::cout << *listRevIt << std::endl;
+		}
+	}
 
-    // Iterate using reverse_iterator
-    std::cout << "Reverse iteration: ";
-    for (MutantStack<int>::reverse_iterator rit = mstack.rbegin(); rit != mstack.rend(); ++rit) {
-        std::cout << *rit << " ";
-    }
-    std::cout << std::endl;
+	std::cout << "MutantStack ------------------------------" << std::endl;
+	{
+		MutantStack<int> mStack;
+		mStack.push(1);
+		mStack.push(2);
+		mStack.push(1337);
+		std::cout << "mStack.top(): " << mStack.top() << std::endl;
+		mStack.pop();
+		std::cout << "mStack.size(): " << mStack.size() << std::endl;
+		mStack.push(3);
+		mStack.push(4);
+		mStack.push(5);
+		mStack.push(6);
 
-    // Using const_iterator
-    const MutantStack<int>& constStack = mstack;
-    std::cout << "Const forward iteration: ";
-    for (MutantStack<int>::const_iterator cit = constStack.begin(); cit != constStack.end(); ++cit) {
-        std::cout << *cit << " ";
-    }
-    std::cout << std::endl;
+		MutantStack<int>::iterator stackIt = mStack.begin();
+		MutantStack<int>::iterator stackEnd = mStack.end();
+		++stackIt;
+		--stackIt;
+		while (stackIt != stackEnd)
+		{
+			std::cout << *stackIt << std::endl;
+			++stackIt;
+		}
 
-    return 0;
+		std::stack<int> standardStack(mStack);
+		MutantStack<int> copiedStack(mStack);
+		MutantStack<int>::reverse_iterator stackRevIt;
+		std::cout << "rbegin: " << *copiedStack.rbegin() << std::endl;
+		std::cout << "rend: " << *(--copiedStack.rend()) << std::endl;
+		std::cout << "Content: " << std::endl;
+		for (stackRevIt = --copiedStack.rend(); stackRevIt != --copiedStack.rbegin(); stackRevIt--){
+			std::cout << *stackRevIt << std::endl;
+		}
+	}
+	return 0;
+
 }

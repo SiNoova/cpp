@@ -1,6 +1,7 @@
 NAME = exec
 SRC = main.cpp 
 OBJ = $(SRC:%.cpp=%.o)
+INCLUDE = MutantStack.hpp
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
@@ -11,7 +12,7 @@ $(NAME): $(OBJ)
 	@$(CC) $(OBJ) -o $(NAME)
 	@echo "Executable linked successfully!"
 
-%.o: %.cpp
+%.o: %.cpp $(INCLUDE)
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@echo "Compiled $<"
 

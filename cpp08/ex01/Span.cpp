@@ -49,8 +49,8 @@ int Span::longestSpan()
 	if (intergers.size() < 2)
 		throw std::runtime_error("not enough numbersd to find a span");
 
-	unsigned int min = *std::min_element(intergers.begin(), intergers.end());
-	unsigned int max = *std::max_element(intergers.begin(), intergers.end());
+	int min = *std::min_element(intergers.begin(), intergers.end());
+	int max = *std::max_element(intergers.begin(), intergers.end());
 	return max - min;
 }
 

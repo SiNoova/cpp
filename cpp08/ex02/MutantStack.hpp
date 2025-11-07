@@ -4,16 +4,20 @@
 #include <iostream>
 #include <stack>
 #include <list>
-#include <deque>
 
 template <typename T>
 class MutantStack : public std::stack<T, std::deque<T> > {
-	private:
-		MutantStack(const MutantStack& obj) {(void) obj;};
-		MutantStack& operator=(const MutantStack& obj) {(void) obj;};
 	public:
 		MutantStack() {};
 		~MutantStack() {};
+		
+		MutantStack(const MutantStack<T>& other) : std::stack<T, std::deque<T> >(other) {}	
+		MutantStack& operator=(const MutantStack<T> & other)
+		{
+			if (this != &other)
+				this->c = other.c;
+			return *this;
+		}
 
 		typedef typename std::stack<T, std::deque<T> >::container_type::iterator iterator;
 		typedef typename std::stack<T, std::deque<T> >::container_type::reverse_iterator reverse_iterator;

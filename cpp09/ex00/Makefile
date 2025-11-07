@@ -1,7 +1,7 @@
-NAME = exec
-SRC = main.cpp
+NAME = btc
+SRC = main.cpp BitcoinExchange.cpp
 OBJ = $(SRC:%.cpp=%.o)
-INCLUDE = MutantStack.hpp
+INCLUDE = BitcoinExchange.hpp
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98

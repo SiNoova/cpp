@@ -1,7 +1,7 @@
 #include "DiamondTrap.hpp"
 
 DiamondTrap::DiamondTrap()
-: ClapTrap(), ScavTrap(), FragTrap(), name("Default")
+: name("Default")
 {
     HitPoints = FragTrap::HitPoints;
     EnergyPoints = ScavTrap::EnergyPoints;

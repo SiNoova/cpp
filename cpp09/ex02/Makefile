@@ -1,22 +1,28 @@
-CPP = c++
-CFLAGS = 
 NAME = PmergeMe
-SRCS = main.cpp PmergeMe.cpp
-OBJS = $(SRCS:.cpp=.o)
+SRC = main.cpp PmergeMe.cpp
+OBJ = $(SRC:%.cpp=%.o)
+INCLUDE = PmergeMe.hpp
 
+CC = c++
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 
-%.o: %.cpp
-	$(CPP) $(CFLAGS) -c $< -o $@
+$(NAME): $(OBJ)
+	@$(CC) $(OBJ) -o $(NAME)
+	@echo "Executable linked successfully!"
 
-$(NAME): $(OBJS)
-	$(CPP) $(CFLAGS) $(OBJS) -o $(NAME)
+%.o: %.cpp $(INCLUDE)
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@echo "Compiled $<"
 
 clean:
-	rm -f $(OBJS)
+	@rm -f $(OBJ)
+	@echo "Cleaned object files"
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@echo "Cleaned executables"
 
 re: fclean all
+ 

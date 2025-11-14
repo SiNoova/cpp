@@ -5,6 +5,9 @@
 #include <vector>
 #include <map>
 #include <cmath>
+#include <ctime>
+#include <deque>
+
 class PmergeMe
 {
 
@@ -13,7 +16,7 @@ class PmergeMe
 };
 
 std::vector<int> pairing(std::vector<int> vect, size_t level);
-int isitsorted(std::vector<int> vect);
-int generate_jakobstald_number(int n);
+std::deque<int> pairing(std::deque<int> vect, size_t level);
+size_t generate_jakobstald_number(int n);
 void generate_jakobstald_sequence(std::vector<int> &sequence, size_t size);
 #endif

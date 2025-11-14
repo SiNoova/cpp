@@ -24,7 +24,6 @@ BitcoinExchange::BitcoinExchange()
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange& other) : databise(other.databise) {}
 
-
 BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other)
 {
 	if (this != &other)
@@ -115,6 +114,14 @@ void BitcoinExchange::ProcessInput(const char *input_path)
 	std::string line;
 	if	(std::getline(file, line))
 	{
+		size_t first = line.find_first_not_of(" \t");
+		size_t last = line.find_last_not_of(" \t");
+		if (line.empty() || first == std::string::npos || last == std::string::npos)
+		{
+			std::cout << "Error: Missing header" << std::endl;
+			return;
+		}
+		line = line.substr(first, (last - first + 1));
 		if (line != "date | value")
 		{
 			std::cout << "Error: Invalid header in input file date | value" << std::endl;

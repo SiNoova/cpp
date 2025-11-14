@@ -8,13 +8,6 @@
 #include <ctime>
 #include <deque>
 
-class PmergeMe
-{
-
-	public:
-		static std::vector<int> &merge_sort(std::vector<int> vect);
-};
-
 std::vector<int> pairing(std::vector<int> vect, size_t level);
 std::deque<int> pairing(std::deque<int> vect, size_t level);
 size_t generate_jakobstald_number(int n);

@@ -37,6 +37,11 @@ int main(int ac, char **av)
 	{
 		vect.push_back(std::atoi(av[i]));
 	}
+	std::cout << "vect: ";
+	for (size_t i = 0; i < vect.size(); i++)
+		std::cout << vect[i] << " ";
+	std::cout << std::endl;
+	
 	vect = pairing(vect, 1);
 	if (!isitsorted(vect))
 	{
@@ -47,8 +52,9 @@ int main(int ac, char **av)
 
 	// std::vector<int> vect;
 	// generate_jakobstald_sequence(vect, 7);
-	// for (size_t i = 0; i < vect.size(); i++)
-	// 	std::cout << vect[i] << " ";
-	// std::cout << std::endl;
+	std::cout << "sorted: ";
+	for (size_t i = 0; i < vect.size(); i++)
+		std::cout << vect[i] << " ";
+	std::cout << std::endl;
 	return 0;
 }

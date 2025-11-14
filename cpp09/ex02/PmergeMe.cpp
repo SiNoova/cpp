@@ -69,8 +69,6 @@ std::vector<int> sorting(std::vector<int> vect, size_t level)
 {
 	std::vector<std::vector<int> >main, pend;
 	std::vector<int> sorted;
-	if (level > 1)
-		level /= 2;
 	int i = 0;
 	while (i < vect.size())
 	{
@@ -110,10 +108,10 @@ std::vector<int> sorting(std::vector<int> vect, size_t level)
 				right = v_size[k];
 				k++;
 			} 
-			if (k >= origin.size())
+			if (k >= v_size.size())
 				right = main.size();
 			int right2 = right;
-			while (left < right2)
+			while (left != right2)
 			{
 				int middle =  left + (right2 - left) / 2;
 				if (pend[jak_vec[i] - 1].back() < main[middle].back())
@@ -121,7 +119,6 @@ std::vector<int> sorting(std::vector<int> vect, size_t level)
 				else
 					left = middle + 1;
 			}
-			std::cout << "Inserting " << pend[jak_vec[i] - 1].back() << " at position " << left<< " in size of " << right << std::endl;
 			main.insert(main.begin() + left, pend[jak_vec[i] - 1]);
 		}
 	}
@@ -142,9 +139,7 @@ std::vector<int> pairing(std::vector<int> vect, size_t level)
 		std::vector<int> pair1;
 		std::vector<int> pair2;
 		for (int j = i; j < level + i  && j < vect.size(); j++)
-		{
 			pair1.push_back(vect[j]);
-		}
 		for (int j = i + level ; j < level * 2 + i && j < vect.size(); j++)
 			pair2.push_back(vect[j]);
 		if (pair1.size() == level && pair2.size() == level && pair1.back() <= pair2.back())
@@ -161,10 +156,18 @@ std::vector<int> pairing(std::vector<int> vect, size_t level)
 		pair2.clear();
 	}
 	for (size_t i = new_vec.size(); i < vect.size(); i++)
-		new_vec.push_back(vect[i]);
+		new_vec.push_back(vect[i]);	
 
+	std::cout << "pairing: ";
+	for (size_t i = 0 ; i< new_vec.size(); i++)
+		std::cout << new_vec[i] << " ";
+	std::cout << "\n-----------------" <<std::endl;
 	new_vec = pairing(new_vec, level * 2);
-	new_vec = sorting(new_vec, level * 2);
+	new_vec = sorting(new_vec, level);
+	std::cout << "sorting ";
+	for (size_t i = 0 ; i< new_vec.size(); i++)
+		std::cout << new_vec[i] << " ";
+	std::cout << "\n-----------------" <<std::endl;
 	return new_vec;
 }
 
